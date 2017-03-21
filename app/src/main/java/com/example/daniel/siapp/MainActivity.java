@@ -16,8 +16,6 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String END_POINT = "http://158.49.112.86:1521/";
-
     private RecyclerView list;
 
     @Override
@@ -34,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void doRequest() {
-        ApiService apiService = ApiClient.createRetrofitService(ApiService.class, END_POINT);
+        ApiService apiService = ApiClient.createRetrofitService(ApiService.class, ApiService.END_POINT);
         Call<Medidas> aa = apiService.getMedidas();
         aa.enqueue(new Callback<Medidas>() {
             @Override

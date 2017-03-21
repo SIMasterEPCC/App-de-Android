@@ -6,17 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.daniel.siapp.models.Medida;
 import com.example.daniel.siapp.models.Medidas;
-import com.example.daniel.siapp.models.Temperature;
 
 import java.util.List;
 
 public class MedidasAdapter extends RecyclerView.Adapter<MedidasAdapter.ListHolder> {
 
-    List<Temperature> items;
+    List<Medida> items;
 
     public MedidasAdapter(Medidas medidas) {
-        this.items = medidas.getTemperature();
+        this.items = medidas.getMedidas();
     }
 
     @Override
@@ -50,7 +50,7 @@ public class MedidasAdapter extends RecyclerView.Adapter<MedidasAdapter.ListHold
             humidity = (TextView) itemView.findViewById(R.id.humidity);
         }
 
-        public void bind(Temperature item) {
+        public void bind(Medida item) {
             date.setText(String.valueOf(item.getFecha()));
             device.setText(String.valueOf(item.getDispositivo()));
             temperature.setText(String.valueOf(item.getTemperatura()));

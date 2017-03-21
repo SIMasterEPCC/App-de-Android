@@ -4,7 +4,7 @@ package com.example.daniel.siapp.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Temperature {
+public class Medida {
 
     @SerializedName("Temperatura")
     @Expose

@@ -1,22 +1,23 @@
 
 package com.example.daniel.siapp.models;
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class Medidas {
 
-    @SerializedName("temperature")
+    @SerializedName("medidas")
     @Expose
-    private List<Temperature> temperature = null;
+    private List<Medida> medidas = null;
 
-    public List<Temperature> getTemperature() {
-        return temperature;
+    public List<Medida> getMedidas() {
+        return medidas;
     }
 
-    public void setTemperature(List<Temperature> temperature) {
-        this.temperature = temperature;
+    public void setMedidas(List<Medida> medidas) {
+        this.medidas = medidas;
     }
 
 }
