@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.example.daniel.siapp.models.Medida;
 import com.example.daniel.siapp.models.Medidas;
 
+import java.util.Collections;
 import java.util.List;
 
 public class MedidasAdapter extends RecyclerView.Adapter<MedidasAdapter.ListHolder> {
@@ -16,7 +17,9 @@ public class MedidasAdapter extends RecyclerView.Adapter<MedidasAdapter.ListHold
     List<Medida> items;
 
     public MedidasAdapter(Medidas medidas) {
-        this.items = medidas.getMedidas();
+        List<Medida> items = medidas.getMedidas();
+        Collections.reverse(items);
+        this.items = items;
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.example.daniel.siapp;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +19,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView list;
+    private SwipeRefreshLayout swipeRefreshContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +27,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         findViews();
+        init();
+    }
+
+    private void init() {
+        swipeRefreshContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                doRequest();
+            }
+        });
+        swipeRefreshContainer.setColorSchemeColors(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
         doRequest();
     }
 
     private void findViews() {
         list = (RecyclerView) findViewById(R.id.list);
+        swipeRefreshContainer = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_container);
     }
 
     private void doRequest() {
@@ -38,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Medidas> call, Response<Medidas> response) {
                 showMedidas(response.body());
+                swipeRefreshContainer.setRefreshing(false);
             }
 
             @Override
