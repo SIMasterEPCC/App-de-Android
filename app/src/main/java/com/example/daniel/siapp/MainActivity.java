@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call<Medidas> call, Throwable t) {
                 t.printStackTrace();
                 Toast.makeText(MainActivity.this, "An error has ocurred", Toast.LENGTH_SHORT).show();
+                swipeRefreshContainer.setRefreshing(false);
             }
         });
     }

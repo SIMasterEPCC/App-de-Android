@@ -18,5 +18,4 @@ public class ApiClient {
         return retrofit.create(clazz);
     }
 
-
 }
